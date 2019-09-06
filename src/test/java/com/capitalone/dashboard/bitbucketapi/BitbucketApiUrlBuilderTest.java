@@ -28,29 +28,35 @@ public class BitbucketApiUrlBuilderTest {
 
     @Test
     public void buildReposApiUrl() throws URISyntaxException {
-        given(settings.getApi()).willReturn("/rest/api/1.0/");
+        //J.J. given(settings.getApi()).willReturn("/rest/api/1.0/");
+	given(settings.getApi()).willReturn("/api/2.0/repositories/");
         URI actual = testObject.buildReposApiUrl(HTTPS_HTTPS_SOMERANDOMURL_COM_XYZ_RSA);
         assertNotNull(actual);
-        URI expected = new URIBuilder("https://somerandomurl.com/rest/api/1.0/projects/XYZ/repos/rsa").build();
+        //J.J. URI expected = new URIBuilder("https://somerandomurl.com/rest/api/1.0/projects/XYZ/repos/rsa").build();
+	URI expected = new URIBuilder("https://somerandomurl.com/api/2.0/repositories/XYZ/rsa").build();
         assertEquals(expected,actual);
 
     }
 
     @Test
     public void buildPullRequestApiUrl() throws URISyntaxException {
-        given(settings.getApi()).willReturn("/rest/api/1.0/");
+        //J.J. given(settings.getApi()).willReturn("/rest/api/1.0/");
+	given(settings.getApi()).willReturn("/api/2.0/repositories/");
         URI actual = testObject.buildPullRequestApiUrl(HTTPS_HTTPS_SOMERANDOMURL_COM_XYZ_RSA);
         assertNotNull(actual);
-        URI expected = new URIBuilder("https://somerandomurl.com/rest/api/1.0/projects/XYZ/repos/rsa/pull-requests").build();
+        //J.J. URI expected = new URIBuilder("https://somerandomurl.com/rest/api/1.0/projects/XYZ/repos/rsa/pull-requests").build();
+	URI expected = new URIBuilder("https://somerandomurl.com/api/2.0/repositories/XYZ/rsa/pullrequests").build();
         assertEquals(expected,actual);
     }
 
     @Test
     public void buildPullRequestActivitiesApiUrl() throws URISyntaxException {
-        given(settings.getApi()).willReturn("/rest/api/1.0/");
+        //J.J. given(settings.getApi()).willReturn("/rest/api/1.0/");
+	given(settings.getApi()).willReturn("/api/2.0/repositories/");
         URI actual = testObject.buildPullRequestActivitiesApiUrl(HTTPS_HTTPS_SOMERANDOMURL_COM_XYZ_RSA,"1111");
         assertNotNull(actual);
-        URI expected = new URIBuilder("https://somerandomurl.com/rest/api/1.0/projects/XYZ/repos/rsa/pull-requests/1111/activities").build();
+        //J.J. URI expected = new URIBuilder("https://somerandomurl.com/rest/api/1.0/projects/XYZ/repos/rsa/pull-requests/1111/activities").build();
+	URI expected = new URIBuilder("https://somerandomurl.com/api/2.0/repositories/XYZ/rsa/pullrequests/1111/activity").build();
         assertEquals(expected,actual);
     }
 }
