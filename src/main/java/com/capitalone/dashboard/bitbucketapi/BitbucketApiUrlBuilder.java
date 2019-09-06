@@ -52,14 +52,16 @@ public class BitbucketApiUrlBuilder {
             builder.setPort(urlParts.getPort());
         }
         builder.setPath(
-                apiPath + "/projects/" + urlParts.getProjectKey() + "/repos/" + urlParts.getRepoKey());
+                //J.J. apiPath + "/projects/" + urlParts.getProjectKey() + "/repos/" + urlParts.getRepoKey());
+		apiPath + "/" + urlParts.getProjectKey() + "/" + urlParts.getRepoKey());
         return builder.build();
     }
 
     public URI buildPullRequestApiUrl(String rawUrl) throws URISyntaxException {
         URI uri = buildReposApiUrl(rawUrl);
         URIBuilder builder = new URIBuilder(uri);
-        builder.setPath(builder.getPath() + "/pull-requests");
+        //J.J. builder.setPath(builder.getPath() + "/pull-requests");
+	builder.setPath(builder.getPath() + "/pullrequests");
         return builder.build();
     }
 
@@ -67,7 +69,8 @@ public class BitbucketApiUrlBuilder {
             throws URISyntaxException {
         URI uri = buildReposApiUrl(rawUrl);
         URIBuilder builder = new URIBuilder(uri);
-        builder.setPath(builder.getPath() + "/pull-requests/" + pullRequestId + "/activities");
+        //J.J. builder.setPath(builder.getPath() + "/pull-requests/" + pullRequestId + "/activities");
+	builder.setPath(builder.getPath() + "/pullrequests/" + pullRequestId + "/activity");
         return builder.build();
     }
 }
